@@ -30,6 +30,12 @@ class User < ApplicationRecord
     encrypted_password == encrypt(submitted_password)
   end
 
+  def self.authenticate_with_salt(id, cookie_salt)
+    user = find_by_id(id)
+    return nil if user.nil?
+    return user if user.salt == cookie_salt
+  end
+
   def self.authenticate(email, submited_password)
     user = find_by_email(submited_password)
     return nil if user.nil?
