@@ -1,8 +1,8 @@
 
 #require 'spec_helper'
 
-#describe UsersController do
-#  render_views
+describe UsersController do
+###  render_views
 #
 #  describe "GET 'show'" do
 #    before(:each) do
@@ -18,6 +18,18 @@
 #      get :show , :id => @user
 #      assigns(:user).should == @user
 #    end
-#  end
+  #  end
+
+  describe "GET 'new'" do
+    it "should be successfull" do
+      get :new
+      response.should be_sucess
+    end
+
+    it "should have right title" do
+      get :new
+      response.should have_selector("title", content =>"Sign Up")
+    end
+  end
 #
-#end
+end

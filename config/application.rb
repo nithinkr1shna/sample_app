@@ -28,6 +28,7 @@ module SampleApp
     # the framework and any gems in your application.
 
     # Don't generate system test files.
+    config.filter_parameters += [:password]
     config.generators.system_tests = nil
   end
 end
